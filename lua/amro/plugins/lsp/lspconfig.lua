@@ -1,3 +1,5 @@
+local util = require("lspconfig.util")
+
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
@@ -7,12 +9,6 @@ end
 -- import cmp-nvim-lsp plugin safely
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status then
-  return
-end
-
--- import typescript plugin safely
-local typescript_setup, typescript = pcall(require, "typescript")
-if not typescript_setup then
   return
 end
 
@@ -62,22 +58,21 @@ lspconfig["terraformls"].setup({
   on_attach = on_attach,
 })
 
+local root_files = {
+  "tests/requirements.txt",
+}
+
 -- configuration for jedi lan server (python pytest supp)
 lspconfig["jedi_language_server"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
+  root_dir = util.root_pattern(unpack(root_files)),
 })
 
 lspconfig["pyright"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
-  settings = {
-    python = {
-      analysis = {
-        extrapaths = { "/Users/amro/repos/mmservices/" },
-      },
-    },
-  },
+  root_dir = util.root_pattern(unpack(root_files)),
 })
 
 -- configure lua server (with special settings)

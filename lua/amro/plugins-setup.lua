@@ -52,6 +52,9 @@ return packer.startup(function(use)
   -- vs-code like icons
   use("nvim-tree/nvim-web-devicons")
 
+  -- pytest
+  use("AckslD/nvim-pytrize.lua")
+
   -- statusline
   use("nvim-lualine/lualine.nvim")
 
@@ -77,7 +80,6 @@ return packer.startup(function(use)
   use("neovim/nvim-lspconfig") -- easily configure language servers
   use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
   use({ "glepnir/lspsaga.nvim", branch = "main" }) -- enhanced lsp uis
-  use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
   use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
   -- formatting & linting

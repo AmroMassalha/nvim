@@ -21,18 +21,16 @@ mason.setup()
 
 mason_lspconfig.setup({
   -- list of servers for mason to install
-    ensure_installed = {
-      "jedi_language_server",
-      "clangd",
-      "gopls",
-      "dockerls",
-      "lua_ls",
-      "pyright",
-      "rust_analyzer",
-      "taplo",
-      "jsonls",
-      "groovyls",
-
+  ensure_installed = {
+    "jedi_language_server",
+    "gopls",
+    "dockerls",
+    "lua_ls",
+    "pyright",
+    "rust_analyzer",
+    "taplo",
+    "jsonls",
+    "groovyls",
   },
 
   -- auto-install configured servers (with lspconfig)
